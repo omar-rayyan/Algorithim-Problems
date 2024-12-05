@@ -9,8 +9,8 @@ public class ArrayReverse {
 
         arr = new int[]{1, 2, 3, 4, 5};
 
-        reverseArrayUsingTempArray(arr);
-        System.out.println("Reversed Array (Temp Array): " + Arrays.toString(arr));
+        reverseArrayRecursively(arr, 0, arr.length - 1);
+        System.out.println("Reversed Array (Recursion): " + Arrays.toString(arr));
     }
 
     public static void reverseArrayTwoPointers(int[] arr) {
@@ -21,11 +21,15 @@ public class ArrayReverse {
         }
     }
 
-    public static void reverseArrayUsingTempArray(int[] arr) {
-        int[] temp = new int[arr.length];
-        for (int i = 0; i < arr.length; i++) {
-            temp[i] = arr[arr.length - 1 - i];
+    public static void reverseArrayRecursively(int[] arr, int left, int right) {
+        if (left >= right) {
+            return;
         }
-        System.arraycopy(temp, 0, arr, 0, arr.length);
+
+        int temp = arr[left];
+        arr[left] = arr[right];
+        arr[right] = temp;
+
+        reverseArrayRecursively(arr, left + 1, right - 1);
     }
 }
