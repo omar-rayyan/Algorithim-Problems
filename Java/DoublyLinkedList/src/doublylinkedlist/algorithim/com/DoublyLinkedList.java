@@ -122,13 +122,16 @@ public class DoublyLinkedList {
         }
 	}
 	
-	public String deleteMiddle() {
+	public void deleteMiddle() {
 		DLNode fast = this.head;
 		DLNode slow = this.head;
 		while(fast.next != null) {
 			fast = fast.next.next;
 			slow = slow.next;
 		}
-		return slow.value;
+		DLNode prev_node = slow.prev;
+		DLNode next_node = slow.next;
+		next_node.prev = prev_node;
+		prev_node.next = next_node;
 	}
 }
