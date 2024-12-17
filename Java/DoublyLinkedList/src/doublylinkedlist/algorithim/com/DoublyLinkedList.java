@@ -51,7 +51,7 @@ public class DoublyLinkedList {
 			System.out.println(runner.value);
 			runner = runner.next;
 		}
-		System.out.println("===================Iloveyou==========");
+		System.out.println("=======================================");
 	}
 	
 	public void addAtIndex(String value, int position) {
