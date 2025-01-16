@@ -42,12 +42,27 @@ public class BinarySearchTreeNode {
 		return new_node;
 	}
 	
-	void inOrderTraversal(BinarySearchTreeNode node) {
+	public void inOrderTraversal(BinarySearchTreeNode node) {
         if (node != null) {
             inOrderTraversal(node.left);
             System.out.print(node.val + " ");
             inOrderTraversal(node.right);
         }
     }
+	
+	public BinarySearchTreeNode searchBST(int target) {
+		BinarySearchTreeNode root = this;
+		if (root.val == target) { // root is value
+			return root;
+		}
+		if (root.val > target) { // switch to the left tree
+			return root.left.searchBST(target);
+		}
+		if (root.val < target) { // switch to the right tree
+			return root.right.searchBST(target);
+		}
+		// root is null (target not found), therefore return null
+		return null;
+	}
 	
 }
